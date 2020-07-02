@@ -1,3 +1,4 @@
+DROP TABLE castings;
 DROP TABLE stars;
 DROP TABLE movies;
 
@@ -11,4 +12,11 @@ CREATE TABLE movies (
     id SERIAL PRIMARY KEY,
     title VARCHAR(255),
     genre VARCHAR(255)
+);
+
+CREATE TABLE castings (
+    id SERIAL PRIMARY KEY,
+    star_id INT REFERENCES stars(id) ON DELETE CASCADE,
+    movie_id INT REFERENCES movies(id) ON DELETE CASCADE,
+    fee INT
 );
